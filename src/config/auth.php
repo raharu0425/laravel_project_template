@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'admin_user' => [
+        'name' => env("ADMIN_USER"),
+        'email' => env("ADMIN_USER_EMAIL"),
+        'password' => env("ADMIN_PASSWORD"),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\AdminUser::class,
         ],
 
         // 'users' => [

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\AdminUser;
 
 class LoginController extends Controller
 {
@@ -11,13 +13,29 @@ class LoginController extends Controller
      */
     public function index(Request $request)
     {
-        return view("login/index", []);
+        return view("login/index", [
+        ]);
     }
 
-    public function test(Request $request)
+    /**
+     * ログイン実行
+     */
+    public function start(Request $request)
     {
-        var_dump($request->input("user_id"));
-        return view("welcome", []);
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('dashboard');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 
     /**

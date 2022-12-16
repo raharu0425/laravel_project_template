@@ -6,54 +6,41 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
-    <style>
-        body {
-            padding-top: 70px;
-        }
-    </style>
+    <!-- font awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- AdminLet -->
+    <link href="/vendor/adminlte/dist/css/adminlte.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 
-<body class="text-center">
-    <header>
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Laravel Project Temprate</a>
-            </div>
-        </nav>
-    </header>
-    <form class="form-signin">
-        <h1 class="h3 mb-3 font-weight-normal">ログインしてください</h1>
-        <label for="inputEmail" class="sr-only">Emailアドレス</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Emailアドレス" required autofocus>
-        <label for="inputPassword" class="sr-only">パスワード</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" required>
-
-        <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" value="remember-me" id="rememberCheck">
-            <label class="form-check-label" for="rememberCheck">
-                状態を記憶する
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">サインイン</button>
-    </form>
-
-
-        <div class="login-box">
-
-            <div class="login-box-body">
-                <p class="login-box-msg">ログインして下さい2</p>
-
-
+<body class="login-page skin-green">
+    <div class="login-box">
+        <div class="login-box-body">
+            <p class="login-box-msg">ログインして下さい</p>
+            @foreach ($errors->all() as $error)
+                <div class="flash_message bg-danger text-center py-3 my-0">
+                    {{$error}}
+                </div>
+            @endforeach
+            <form action="/login/start" method="post">
+                <!-- CSRF保護 -->
+                @csrf
                 <!-- メール -->
-                <div class="form-group has-feedback">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                    </div>
                     <input type="email" name="email" class="form-control" placeholder="Email" />
-                    <span class="form-control-feedback"><i class="fa fa-envelope-o"></i></span>
                 </div>
 
                 <!-- パスワード -->
-                <div class="form-group has-feedback">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    </div>
                     <input type="password" name="password" class="form-control" placeholder="Password" />
-                    <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
                 </div>
 
                 <!-- ボタン グリッドでセンタリング-->
@@ -66,8 +53,10 @@
                     <div class="col-xs-4">
                     </div>
                 </div>
+            </form>
         </div>
     </div>
+</div>
 
 </body>
 
