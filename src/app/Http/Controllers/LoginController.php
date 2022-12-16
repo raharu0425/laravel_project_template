@@ -6,11 +6,18 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    /**
+     * ログインTOP画面
+     */
     public function index(Request $request)
     {
+        return view("login/index", []);
+    }
+
+    public function test(Request $request)
+    {
         var_dump($request->input("user_id"));
-        //なぜ変更入らないんだろうか？
-        return "aaaaa";
+        return view("welcome", []);
     }
 
     /**

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/php-info', 'App\Http\Controllers\LoginController@phpInfo')->name('php-info');
 Route::get('/login', 'App\Http\Controllers\LoginController@index')->name('login.index');
+Route::get('/login/test', 'App\Http\Controllers\LoginController@test')->name('login.test');
 
 /*
 Route::get('/', function () {
