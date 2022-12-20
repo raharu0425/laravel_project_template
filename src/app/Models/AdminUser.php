@@ -12,15 +12,4 @@ class AdminUser extends Authenticatable
 
     protected $table = 'admin_user';
 
-    /**
-     * ログイン情報からデータを取得する
-     */
-    public function getByAuth($email, $password)
-    {
-        $condition = [
-            "email" => $email,
-            "password" => $password,
-        ];
-        return $this->where($condition)->first();
-    }
 }
