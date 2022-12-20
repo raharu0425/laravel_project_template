@@ -203,7 +203,7 @@ return [
         'mail' => [
             'full_log' => false,
         ],
-        'views' =[
+        'views' => [
             'timeline' => false,  // Add the views to the timeline (Experimental)
             'data' => true,    //Note: Can slow down the application, because the data can be quite large..
         ],
